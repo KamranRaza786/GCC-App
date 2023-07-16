@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+   <div class="container">
+     <h1>Weather app</h1>
+    <form onsubmit="getweather(); return false">
+        <label for="cityName">City:</label>
+        <input type="text" name="cityName" id="cityName" placeholder="enter your city name">
+        <br>
+        <button type="submit">Get Weather</button>
+        <br>
+    </form>
+    <div class="weather-container">
+
+    </div class="notification">
+    <div id="result">
+    </div>
+    <div class="weather-icon">
+        <img id="weathericon" alt=""/>
+    </div>
+    <div id ="max_temp">
+        
+    </div></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./app.mjs"></script>
+
+</div>
+
+</body>
+
+</html>

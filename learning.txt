@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>es6 JSON objects</h1>
+    <P>JSON stands for javascript object notation</P>
+
+
+    <script>
+        //let name = "name"
+        let obj = {
+            "name": "raza",
+            "subject": "chatbot",
+            "roll": "batch-3",
+            "isActive": "true",
+            electives:[
+                {name:"abc", teacher:"alice",grade: "23"},
+                {name: "xyz"},
+                {name: "aaa"}
+            ],
+            bio:{
+                age: 23,
+                isSingle:true,
+                nat:"pakistani",
+                relegion:"islam"
+            }
+        }
+
+        //console.log(obj[name]);
+        console.log(obj["name"]);
+        console.log(obj.subject);
+        console.log(obj["roll"]);
+        console.log(obj["isActive"]);
+
+        obj["name"] = "kashif";
+        obj.subject = "graphics";
+        obj["roll"] = "92";
+        obj["isActive"] = "yes";
+
+    </script>
+</body>
+https://axios-http.com/docs/intro
+ https://openweathermap.org/img/wn/10d@2x.png
+</html>
