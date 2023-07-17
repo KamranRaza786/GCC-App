@@ -9,32 +9,49 @@
 </head>
 
 <body>
-   <div class="container">
-     <h1>Weather app</h1>
-    <form onsubmit="getweather(); return false">
-        <label for="cityName">City:</label>
-        <input type="text" name="cityName" id="cityName" placeholder="enter your city name">
-        <br>
-        <button type="submit">Get Weather</button>
-        <br>
-    </form>
-    <div class="weather-container">
+    <main>
+        <section>
+            <div class="container">
+                <h1>Weather app</h1>
 
-    </div class="notification">
-    <div id="result">
-    </div>
-    <div class="weather-icon">
-        <img id="weathericon" alt=""/>
-    </div>
-    <div id ="max_temp">
-        
-    </div></div>
+                <form onsubmit="getweather(); return false">
+                    <label for="cityName">City:</label>
+                    <input type="text" name="cityName" id="cityName" placeholder="enter your city name">
+                    <br>
+                    <button type="submit">Get Weather</button>
+                    <br>
+                </form>
+                <div>
+                    <div class="content">
+                        <hr>
+                        <div id="result"></div>
+                        <hr>
+                        <div id="max_temp"></div>
+                        <div id="min_temp"></div>
+                        <div id="feels_like"></div>
+                        <div id="humidity"></div>
+                        <div id="pressure"></div>
+                        <div id="description"></div>
+                        <div id="main"></div>
+                        <div id="deg"></div>
+                        <div id="speed"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./app.mjs"></script>
+    <script src="./app.js"></script>
 
-</div>
 
 </body>
+<footer>
+    <div class="container">
+
+    <h3>Thanks for visiting my new learning code deployment app</h3></div>
+</footer>
 
 </html>
