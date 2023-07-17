@@ -7,21 +7,28 @@
 <body>
   <div class="container">
     <h1>Weather App</h1>
-    <p id="time"></p>
-    <div id="location"></div>
-    <div id="weather-icon"></div>
-    <div id="weather-details">
-      <div id="temperature"></div>
-      <div id="description"></div>
+    <div class="card">
+      <div class="card-header">
+        <p id="time"></p>
+        <div id="location"></div>
+      </div>
+      <div class="card-body">
+        <div id="weather-icon"></div>
+        <div id="weather-details">
+          <div id="temperature"></div>
+          <div id="description"></div>
+        </div>
+      </div>
     </div>
-    <div id="search">
-      <input type="text" id="city-input" placeholder="Enter a city name">
-      <button id="search-btn">Search</button>
+    <div class="search-card">
+      <div class="search-input">
+        <input type="text" id="city-input" placeholder="Enter a city name">
+        <button id="search-btn">Search</button>
+      </div>
+      <div id="error-message"></div>
     </div>
-    <div id="error-message"></div>
   </div>
   
-
   <script src="app.mjs"></script>
 </body>
 </html>
