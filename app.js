@@ -1,3 +1,8 @@
+const express = require('express');
+const app =express();
+app.get('/weather',(req,res) =>{
+
+})
 window.getweather = function () {
     const cityName = document.querySelector("#cityName").value;
     let API_KEY = '2fc6024d7933a770bd4c1168978bdfbd'
