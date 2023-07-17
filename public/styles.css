@@ -9,6 +9,7 @@
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  color: #333;
 }
 
 .card {
@@ -20,35 +21,47 @@ h1 {
 
 .card-header {
   padding: 20px;
-  background-color: #f2f2f2;
+  background-color: #4169e1;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  color: #fff;
 }
 
 .card-body {
   padding: 20px;
 }
 
-.card-body #weather-icon {
-  text-align: center;
-  margin-bottom: 20px;
+.card-body #weather-details {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-#location {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+#weather-icon {
+  margin-right: 20px;
+}
+
+#weather-icon img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+ }
+
+.weather-info {
+  flex-grow: 1;
 }
 
 #temperature {
   font-size: 60px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: #333;
 }
 
 #description {
-  font-size: 18px;
-  color: #777;
+  font-size: 30px;
+  color: #b03c3c;
   margin-bottom: 20px;
 }
 
@@ -94,3 +107,8 @@ h1 {
   color: red;
   margin-top: 20px;
 }
+p{
+  text-align: right;
+  font-size: medium;
+}
+
