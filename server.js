@@ -26,6 +26,11 @@ app.get('/weather/:city', async (req, res) => {
   }
 });
 
+// Define a fallback route for all other requests
+app.get('*', (req, res) => {
+  res.status(404).send('404 Not Found');
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
