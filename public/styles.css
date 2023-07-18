@@ -130,3 +130,7 @@ thead {
   color: #fff;
 }
 
+#weather-icon img {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+}
