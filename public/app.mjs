@@ -5,7 +5,7 @@ const apiKey = '2fc6024d7933a770bd4c1168978bdfbd';
 // Function to get weather data for a specific city
 async function getWeatherData(city) {
   try {
-    const response = await fetch(`http://localhost:3000/weather/${city}`);
+    const response = await fetch(`/weather/${city}`);
     const weatherData = await response.json();
     return weatherData;
   } catch (error) {
@@ -15,8 +15,8 @@ async function getWeatherData(city) {
 }
 
 // Function to update the weather display for the default city
-async function updateWeatherDisplay() {
-  const defaultCity = 'Jhang,Pakistan';
+async function updateDefaultCityWeather() {
+  const defaultCity = 'karachi,Pakistan';
   try {
     const weatherData = await getWeatherData(defaultCity);
     // Update the weather display here based on your index.html structure
@@ -26,13 +26,13 @@ async function updateWeatherDisplay() {
     document.getElementById('description').textContent = weatherData.weather[0].description;
     // ...
   } catch (error) {
-    console.error('Error updating weather display:', error);
+    console.error('Error updating default city weather:', error);
   }
 }
 
 // Function to fetch weather data for the 10 major cities in Pakistan
 async function fetchWeatherFor10Cities() {
-  const majorCities = ['Karachi', 'Lahore', 'Faisalabad', 'Rawalpindi', 'Multan', 'Hyderabad', 'Gujranwala', 'Peshawar', 'Islamabad', 'Quetta'];
+  const majorCities = ['jhang', 'Lahore', 'Faisalabad', 'Rawalpindi', 'Multan', 'Hyderabad', 'Gujranwala', 'Peshawar', 'Islamabad', 'Quetta'];
   try {
     for (const city of majorCities) {
       const weatherData = await getWeatherData(city);
@@ -64,8 +64,48 @@ function getTimeFromUnixTimestamp(timestamp) {
   return `${hours}:${minutes}`;
 }
 
-// Call the function to fetch and display weather data for the default city on page load
+// Function to fetch weather data for the entered city
+async function fetchWeatherForCity(city) {
+  try {
+    const weatherData = await getWeatherData(city);
+    // Update the weather display here based on your index.html structure
+    // For example:
+    document.getElementById('location').textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+    document.getElementById('temperature').textContent = `${weatherData.main.temp}°C`;
+    document.getElementById('description').textContent = weatherData.weather[0].description;
+    // ...
+  } catch (error) {
+    console.error('Error fetching weather data for the entered city:', error);
+    document.getElementById('error-message').textContent = 'Weather data not found for the entered city.';
+  }
+}
+
+// Function to handle the search button click
+function handleSearchButtonClick() {
+  const cityInput = document.getElementById('city-input');
+  const cityName = cityInput.value.trim();
+
+  // Check if the input is not empty
+  if (cityName) {
+    // Clear any previous error message
+    document.getElementById('error-message').textContent = '';
+    
+    // Fetch weather data for the entered city
+    fetchWeatherForCity(cityName);
+    
+    // Clear the input field
+    cityInput.value = '';
+  } else {
+    // Show an error message if the input is empty
+    document.getElementById('error-message').textContent = 'Please enter a city name.';
+  }
+}
+
+// Attach the click event listener to the search button
+document.getElementById('search-btn').addEventListener('click', handleSearchButtonClick);
+
+// Call the function to fetch and display weather data for the default city and 10 major cities on page load
 document.addEventListener('DOMContentLoaded', () => {
-  updateWeatherDisplay();
+  updateDefaultCityWeather();
   fetchWeatherFor10Cities();
 });

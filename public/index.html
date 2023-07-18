@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Weather App</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Weather App</h1>
@@ -17,6 +19,20 @@
     </div>
   </div>
   <br>
+  <!-- Your existing HTML content goes here -->
+
+  <div class="search-card">
+    <div class="search-input">
+      <input type="text" id="city-input" placeholder="Enter a city name">
+      <button id="search-btn">Search</button>
+    </div>
+    <div id="error-message"></div>
+  </div>
+
+  <!-- Your existing HTML content goes here -->
+
+  <script type="module" src="app.js"></script>
+
   <section>
     <div class="container">
       <h2>Weather in Pakistan's 10 Major Cities</h2>
@@ -41,4 +57,5 @@
   </section>
   <script type="module" src="app.mjs"></script>
 </body>
+
 </html>
