@@ -9,28 +9,36 @@
     <h1>Weather App</h1>
     <div class="card">
       <div class="card-header">
-        <p id="time"></p>
         <div id="location"></div>
+        <div id="temperature"></div>
+        <div id="description"></div>
+        <!-- Add other weather data elements for the default city here -->
       </div>
-      <div class="card-body">
-        <div id="weather-details">
-          <div id="weather-icon"></div>
-          <div class="weather-info">
-            <div id="temperature"></div>
-            <div id="description"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="search-card">
-      <div class="search-input">
-        <input type="text" id="city-input" placeholder="Enter a city name">
-        <button id="search-btn">Search</button>
-      </div>
-      <div id="error-message"></div>
     </div>
   </div>
-  
-  <script src="app.mjs"></script>
+  <br>
+  <section>
+    <div class="container">
+      <h2>Weather in Pakistan's 10 Major Cities</h2>
+      <table id="weather-table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Temp (°C)</th>
+            <th>Wind Speed (m/s)</th>
+            <th>Description</th>
+            <th>Lon</th>
+            <th>Lat</th>
+            <th>Sunrise</th>
+            <th>Sunset</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Weather data for 10 cities will be added dynamically -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <script type="module" src="app.mjs"></script>
 </body>
 </html>

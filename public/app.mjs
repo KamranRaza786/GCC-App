@@ -1,113 +1,71 @@
+// app.js
+
+const apiKey = '2fc6024d7933a770bd4c1168978bdfbd';
+
+// Function to get weather data for a specific city
+async function getWeatherData(city) {
+  try {
+    const response = await fetch(`http://localhost:3000/weather/${city}`);
+    const weatherData = await response.json();
+    return weatherData;
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    throw new Error('Weather data not found.');
+  }
+}
+
+// Function to update the weather display for the default city
+async function updateWeatherDisplay() {
+  const defaultCity = 'Jhang,Pakistan';
+  try {
+    const weatherData = await getWeatherData(defaultCity);
+    // Update the weather display here based on your index.html structure
+    // For example:
+    document.getElementById('location').textContent = `${weatherData.name}, ${weatherData.sys.country}`;
+    document.getElementById('temperature').textContent = `${weatherData.main.temp}°C`;
+    document.getElementById('description').textContent = weatherData.weather[0].description;
+    // ...
+  } catch (error) {
+    console.error('Error updating weather display:', error);
+  }
+}
+
+// Function to fetch weather data for the 10 major cities in Pakistan
+async function fetchWeatherFor10Cities() {
+  const majorCities = ['Karachi', 'Lahore', 'Faisalabad', 'Rawalpindi', 'Multan', 'Hyderabad', 'Gujranwala', 'Peshawar', 'Islamabad', 'Quetta'];
+  try {
+    for (const city of majorCities) {
+      const weatherData = await getWeatherData(city);
+      // Update the weather data in the table here based on your index.html structure
+      // For example:
+      const tableRow = document.createElement('tr');
+      tableRow.innerHTML = `
+        <td>${weatherData.name}, ${weatherData.sys.country}</td>
+        <td>${weatherData.main.temp}°C</td>
+        <td>${weatherData.wind.speed} m/s</td>
+        <td>${weatherData.weather[0].description}</td>
+        <td>${weatherData.coord.lon}</td>
+        <td>${weatherData.coord.lat}</td>
+        <td>${getTimeFromUnixTimestamp(weatherData.sys.sunrise)}</td>
+        <td>${getTimeFromUnixTimestamp(weatherData.sys.sunset)}</td>
+      `;
+      document.getElementById('weather-table').appendChild(tableRow);
+    }
+  } catch (error) {
+    console.error('Error fetching weather data for 10 cities:', error);
+  }
+}
+
+// Helper function to convert Unix timestamp to time (HH:mm format)
+function getTimeFromUnixTimestamp(timestamp) {
+  const date = new Date(timestamp * 1000);
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  return `${hours}:${minutes}`;
+}
+
+// Call the function to fetch and display weather data for the default city on page load
 document.addEventListener('DOMContentLoaded', () => {
-  const locationElement = document.getElementById('location');
-  const weatherIconElement = document.getElementById('weather-icon');
-  const temperatureElement = document.getElementById('temperature');
-  const descriptionElement = document.getElementById('description');
-  const timeElement = document.getElementById('time');
-  const searchInput = document.getElementById('city-input');
-  const searchButton = document.getElementById('search-btn');
-  const errorMessageElement = document.getElementById('error-message');
-
-  searchButton.addEventListener('click', () => {
-    const city = searchInput.value.trim();
-    if (city !== '') {
-      fetchWeatherData(city);
-    } else {
-      displayErrorMessage('Please enter a city name.');
-    }
-  });
-
-  async function fetchWeatherData(city) {
-    try {
-      if (city.toLowerCase() === 'current') {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-            async (position) => {
-              const { latitude, longitude } = position.coords;
-              const weatherData = await fetchWeatherByCoordinates(latitude, longitude);
-              updateWeatherData(weatherData);
-              clearErrorMessage();
-            },
-            (error) => {
-              console.error('Error getting user location:', error);
-              displayErrorMessage('Error getting user location. Please try again.');
-            }
-          );
-        } else {
-          console.error('Geolocation is not supported by this browser');
-          displayErrorMessage('Geolocation is not supported by this browser');
-        }
-      } else {
-        const weatherData = await fetchWeatherByCity(city);
-        updateWeatherData(weatherData);
-        clearErrorMessage();
-      }
-    } catch (error) {
-      console.error('Failed to fetch weather data:', error);
-      displayErrorMessage('Failed to retrieve weather data. Please try again.');
-    }
-  }
-
-  async function fetchWeatherByCity(city) {
-    const response = await fetch(`/weather/${city}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch weather data');
-    }
-    const data = await response.json();
-    return data;
-  }
-
-  async function fetchWeatherByCoordinates(latitude, longitude) {
-    const response = await fetch(`/weather/coordinates?lat=${latitude}&lon=${longitude}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch weather data');
-    }
-    const data = await response.json();
-    return data;
-  }
-
-  function updateWeatherData(data) {
-    locationElement.textContent = data.name;
-    temperatureElement.textContent = `${data.main.temp}°C`;
-    descriptionElement.textContent = data.weather[0].description;
-
-    const iconUrl = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
-    weatherIconElement.innerHTML = `<img src="${iconUrl}" alt="Weather Icon">`;
-
-    // Display current time
-    const currentTime = getCurrentTime();
-    timeElement.textContent = currentTime;
-    
-    searchInput.value = ''; // Clear the search box
-  }
-
-  function displayErrorMessage(message) {
-    errorMessageElement.textContent = message;
-  }
-
-  function clearErrorMessage() {
-    errorMessageElement.textContent = '';
-  }
-
-  function getCurrentTime() {
-    const now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    let meridiem = 'AM';
-
-    // Convert to 12-hour format
-    if (hours > 12) {
-      hours -= 12;
-      meridiem = 'PM';
-    } else if (hours === 0) {
-      hours = 12;
-    }
-
-    // Add leading zeros to minutes if necessary
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
-
-    return `${hours}:${minutes} ${meridiem}`;
-  }
+  updateWeatherDisplay();
+  fetchWeatherFor10Cities();
 });

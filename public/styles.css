@@ -1,14 +1,18 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
 }
 
-h1 {
+h1, h2 {
   text-align: center;
-  margin-bottom: 20px;
   color: #333;
 }
 
@@ -46,7 +50,7 @@ h1 {
   height: 160px;
   border-radius: 50%;
   object-fit: cover;
- }
+}
 
 .weather-info {
   flex-grow: 1;
@@ -107,8 +111,22 @@ h1 {
   color: red;
   margin-top: 20px;
 }
-p{
-  text-align: right;
-  font-size: medium;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+thead {
+  background-color: #4169e1;
+  color: #fff;
 }
 
