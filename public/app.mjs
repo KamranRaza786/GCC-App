@@ -22,7 +22,7 @@ async function getWeatherData(city) {
 
 // Function to update the weather display for the default city
 async function updateDefaultCityWeather() {
-  const defaultCity = 'Karachi,Pakistan';
+  const defaultCity = 'karachi,Pakistan';
   try {
     const weatherData = await getWeatherData(defaultCity);
     // Update the weather display here based on your index.html structure
