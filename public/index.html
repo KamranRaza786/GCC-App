@@ -9,53 +9,86 @@
 <body>
   <div class="container">
     <h1>Weather App</h1>
-    <div class="card">
-      <div class="card-header">
-        <div id="location"></div>
-        <div id="temperature"></div>
-        <div id="description"></div>
-        <div id="weather-icon"></div>
-        <!-- Add other weather data elements for the default city here -->
+    <div id="current-time"></div>
+    <div class="search-card">
+      <div class="search-input">
+        <input type="text" id="city-input" placeholder="Enter a city name">
+        <button id="search-btn">Search</button>
       </div>
+      <div id="message-box"></div>
     </div>
+    <section class="current-weather-section">
+      <div class="weather-card-container">
+        <div class="weather-card">
+          <div id="location"></div>
+          <div id="weather-icon"></div>
+          <div class="weather-info">
+            <h2>
+              <div id="temperature"></div>
+            </h2>
+            <div id="description"></div>
+            <div id="timezone"></div>
+          </div>
+        </div>
+        <div class="weather-card">
+          <div id="sunrise"></div>
+          <hr>
+          <div id="sunset"></div>
+          <hr>
+          <div id="pressure"></div>
+          <hr>
+          <div id="humidity"></div>
+          <hr>
+          <div id="sea-level"></div>
+          <hr>
+          <div id="rain"></div>
+          <hr>
+          <div id="clouds"></div>
+          <hr>
+          <div id="wind-speed"></div>
+          <hr>
+          <div id="feels-like"></div>
+          <hr>
+          <div id="degree"></div>
+          <hr>
+          <div id="grnd-level"></div>
+          <hr>
+          <div id="wind-gust"></div>
+          <hr>
+          <div id="temp-min"></div>
+          <hr>
+          <div id="temp-max"></div>
+        </div>
+      </div>
+    </section>
+    <h2>Weather in Pakistan's 10 Major Cities</h2>
+    <table id="weather-table">
+      <thead>
+        <tr>
+          <th>City</th>
+          <th>Temp (°C)</th>
+          <th>Wind Speed (m/s)</th>
+          <th>Description</th>
+          <th>Lon</th>
+          <th>Lat</th>
+          <th>Sunrise</th>
+          <th>Sunset</th>
+          <th>Feels Like (°C)</th>
+          <th>Min Temp (°C)</th>
+          <th>Max Temp (°C)</th>
+          <th>Pressure</th>
+          <th>Humidity</th>
+          <th>Sea Level</th>
+          <th>Rain (mm)</th>
+          <th>Cloudiness (%)</th>
+          <th>Timezone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Weather data for cities will be added dynamically -->
+      </tbody>
+    </table>
   </div>
-  <br>
-  <!-- Your existing HTML content goes here -->
-
-  <div class="search-card">
-    <div class="search-input">
-      <input type="text" id="city-input" placeholder="Enter a city name">
-      <button id="search-btn">Search</button>
-    </div>
-    <div id="error-message"></div>
-  </div>
-
-  <!-- Your existing HTML content goes here -->
-
-  <script type="module" src="app.js"></script>
-
-  <section>
-    <div class="container">
-      <h2>Weather in Pakistan's 10 Major Cities</h2>
-      <table id="weather-table">
-        <thead>
-          <tr>
-            <th>City</th>
-            <th>Temp (°C)</th>
-            <th>Wind Speed (m/s)</th>
-            <th>Description</th>
-            <th>Lon</th>
-            <th>Lat</th>
-            <th>Sunrise</th>
-            <th>Sunset</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Weather data for 10 cities will be added dynamically -->
-        </tbody>
-      </table>
-    </div>
-  </section>
   <script type="module" src="app.mjs"></script>
 </body>
 
