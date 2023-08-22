@@ -1,6 +1,6 @@
 # GCC-App
-<ul>
+<ol>
 <li>google cloud console</li>
 <li>vercel app</li>
 <li>weather app</li>
-</ul>
+</ol>
